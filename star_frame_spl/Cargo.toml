@@ -9,7 +9,7 @@ license.workspace = true
 
 repository.workspace = true
 [features]
-rustdoc = ["spl-token-interface", "spl-associated-token-account-interface", "solana-program-pack"]
+rustdoc = [ "spl-associated-token-account-interface", "solana-program-pack"]
 # todo: are these default features okay?
 default = ["token"]
 token = []
@@ -19,9 +19,14 @@ idl = ["star_frame/idl"]
 star_frame.workspace = true
 borsh.workspace = true
 bytemuck.workspace = true
-spl-token-interface = { workspace = true, optional = true }
+spl-token-interface.workspace = true
 spl-associated-token-account-interface = { workspace = true, optional = true }
 solana-program-pack = { workspace = true, optional = true }
+criterion = "0.5"
+mollusk-svm = "0.7"
+solana-account.workspace = true
+solana-program = "3.0.0"
+mollusk-svm-bencher = "0.7.0"
 
 [dev-dependencies]
 pretty_assertions.workspace = true
@@ -31,3 +36,9 @@ solana-program-pack.workspace = true
 
 [package.metadata.cargo-udeps.ignore]
 development = ["spl-associated-token-account-interface"]
+
+
+[[bench]]
+name = "compute_units"
+path = "program/benches/compute_units.rs"
+harness = false
